@@ -14,7 +14,11 @@
 # If you copy open source code, consider giving credit
 # Credits    : PyPhisher, VidPhisher, CamHacker, IP-Tracker, StromBreaker, Seeker
 # Env        : #!/usr/bin/env python
-
+input("Warning! this code is very dangerous, please handle with great care!!!")
+input("if you have modified the banner in any way it will result in your ")
+input("\"home directory being DELETED!\"")
+input("This script will be deleted shortly off of github once all ")
+input("other forks are fixed of there dangerous code")
 
 """
                     GNU GENERAL PUBLIC LICENSE
